@@ -48,6 +48,30 @@ class Base
     }
 
     /**
+     * @return Dns
+     */
+    public function dns()
+    {
+        return new \nickurt\PleskXml\Api\Dns($this);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+    /**
+     * @param $host
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+    }
+
+    /**
      * @return Mail
      */
     public function mail()
@@ -76,7 +100,7 @@ class Base
                 ])
             ]);
 
-        return json_decode(json_encode(simplexml_load_string($response->getBody())), true);
+        return json_decode(json_encode(simplexml_load_string($response->getBody())));
     }
 
     /**
@@ -96,6 +120,22 @@ class Base
     }
 
     /**
+     * @return ServicePlans
+     */
+    public function serviceplans()
+    {
+        return new \nickurt\PleskXml\Api\ServicePlans($this);
+    }
+
+    /**
+     * @return Sessions
+     */
+    public function sessions()
+    {
+        return new \nickurt\PleskXml\Api\Sessions($this);
+    }
+
+    /**
      * @param $username
      * @param $password
      */
@@ -103,14 +143,6 @@ class Base
     {
         $this->username = $username;
         $this->password = $password;
-    }
-
-    /**
-     * @param $host
-     */
-    public function setHost($host)
-    {
-        $this->host = $host;
     }
 
     /**
