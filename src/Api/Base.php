@@ -88,6 +88,14 @@ class Base
     }
 
     /**
+     * @return Nodejs
+     */
+    public function nodejs()
+    {
+        return new \nickurt\PleskXml\Api\Nodejs($this);
+    }
+
+    /**
      * @return Php
      */
     public function php()

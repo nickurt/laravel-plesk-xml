@@ -2,7 +2,7 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Databases extends Operator
+class Nodejs extends Operator
 {
     /**
      * @return mixed
@@ -10,7 +10,7 @@ class Databases extends Operator
     public function all()
     {
         return $this->client->request([
-            'database' => ['get-db' => ['filter' => []]]
+            'extension' => ['call' => ['nodejs' => ['versions' => []]]]
         ]);
     }
 
@@ -18,21 +18,21 @@ class Databases extends Operator
      * @param $params
      * @return mixed
      */
-    public function get($params)
+    public function disable($params)
     {
         return $this->client->request([
-            'database' => ['get-db' => ['filter' => $params]]
+            'extension' => ['call' => ['nodejs' => ['disable' => $params]]]
         ]);
     }
 
     /**
-     * @param array $params
+     * @param $params
      * @return mixed
      */
-    public function users($params = [])
+    public function enable($params)
     {
         return $this->client->request([
-            'database' => ['get-db-users' => ['filter' => $params]]
+            'extension' => ['call' => ['nodejs' => ['enable' => $params]]]
         ]);
     }
 }
