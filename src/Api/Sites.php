@@ -10,7 +10,7 @@ class Sites extends Operator
     public function all()
     {
         return $this->client->request([
-            'webspace' => ['get' => ['filter' => [], 'dataset' => ['gen_info' => [], 'hosting' => []]]]
+            'site' => ['get' => ['filter' => [], 'dataset' => ['gen_info' => [], 'hosting' => [], 'stat' => [], 'prefs' => [], 'disk_usage' => []]]]
         ]);
     }
 
@@ -21,7 +21,7 @@ class Sites extends Operator
     public function get($params)
     {
         return $this->client->request([
-            'webspace' => ['get' => ['filter' => $params, 'dataset' => ['gen_info' => [], 'hosting' => []]]]
+            'site' => ['get' => ['filter' => $params, 'dataset' => ['gen_info' => [], 'hosting' => [], 'stat' => [], 'prefs' => [], 'disk_usage' => []]]]
         ]);
     }
 }

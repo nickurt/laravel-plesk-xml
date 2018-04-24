@@ -72,11 +72,35 @@ class Base
     }
 
     /**
+     * @return Locales
+     */
+    public function locales()
+    {
+        return new \nickurt\PleskXml\Api\Locales($this);
+    }
+
+    /**
      * @return Mail
      */
     public function mail()
     {
         return new \nickurt\PleskXml\Api\Mail($this);
+    }
+
+    /**
+     * @return Php
+     */
+    public function php()
+    {
+        return new \nickurt\PleskXml\Api\Php($this);
+    }
+
+    /**
+     * @return Plesk
+     */
+    public function plesk()
+    {
+        return new \nickurt\PleskXml\Api\Plesk($this);
     }
 
     /**
@@ -120,6 +144,14 @@ class Base
     }
 
     /**
+     * @return SecretKeys
+     */
+    public function secretkeys()
+    {
+        return new \nickurt\PleskXml\Api\SecretKeys($this);
+    }
+
+    /**
      * @return ServicePlans
      */
     public function serviceplans()
@@ -151,6 +183,22 @@ class Base
     public function sites()
     {
         return new \nickurt\PleskXml\Api\Sites($this);
+    }
+
+    /**
+     * @return SitesAliases
+     */
+    public function sitesaliases()
+    {
+        return new \nickurt\PleskXml\Api\SitesAliases($this);
+    }
+
+    /**
+     * @return Subdomains
+     */
+    public function subdomains()
+    {
+        return new \nickurt\PleskXml\Api\Subdomains($this);
     }
 
     /**

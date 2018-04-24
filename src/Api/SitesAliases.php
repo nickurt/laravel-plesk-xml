@@ -2,7 +2,7 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Subscriptions extends Operator
+class SitesAliases extends Operator
 {
     /**
      * @return mixed
@@ -10,7 +10,7 @@ class Subscriptions extends Operator
     public function all()
     {
         return $this->client->request([
-            'webspace' => ['get' => ['filter' => [], 'dataset' => ['gen_info' => [], 'hosting' => [], 'subscriptions' => []]]]
+            'site-alias' => ['get' => ['filter' => []]]
         ]);
     }
 
@@ -21,7 +21,7 @@ class Subscriptions extends Operator
     public function get($params)
     {
         return $this->client->request([
-            'webspace' => ['get' => ['filter' => $params, 'dataset' => ['gen_info' => [], 'hosting' => [], 'subscriptions' => []]]]
+            'site-alias' => ['get' => ['filter' => $params]]
         ]);
     }
 }
