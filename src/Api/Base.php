@@ -168,6 +168,14 @@ class Base
     }
 
     /**
+     * @return ServicePlansAddons
+     */
+    public function serviceplansaddons()
+    {
+        return new \nickurt\PleskXml\Api\ServicePlansAddons($this);
+    }
+
+    /**
      * @return Sessions
      */
     public function sessions()
