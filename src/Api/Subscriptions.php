@@ -24,4 +24,48 @@ class Subscriptions extends Operator
             'webspace' => ['get' => ['filter' => $params, 'dataset' => ['gen_info' => [], 'hosting' => [], 'subscriptions' => []]]]
         ]);
     }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function hosting($params)
+    {
+        return $this->client->request([
+            'webspace' => ['get-physical-hosting-descriptor' => ['filter' => $params]]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function limits($params)
+    {
+        return $this->client->request([
+            'webspace' => ['get-limit-descriptor' => ['filter' => $params]]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function permissions($params)
+    {
+        return $this->client->request([
+            'webspace' => ['get-permission-descriptor' => ['filter' => $params]]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function traffic($params)
+    {
+        return $this->client->request([
+            'webspace' => ['get_traffic' => ['filter' => $params]]
+        ]);
+    }
 }
