@@ -1,4 +1,4 @@
-## Laravel Plesk Xml
+## Laravel Plesk Onyx 17.8 Xml
 
 ### Installation
 Install this package with composer:

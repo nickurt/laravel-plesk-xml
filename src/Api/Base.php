@@ -19,7 +19,7 @@ class Base
     /**
      * @var string
      */
-    protected $version = '1.6.9.0';
+    protected $version = '1.6.9.1';
 
     /**
      * @var
