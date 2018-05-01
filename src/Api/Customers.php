@@ -18,6 +18,28 @@ class Customers extends Operator
      * @param $params
      * @return mixed
      */
+    public function create($params)
+    {
+        return $this->client->request([
+            'customer' => ['add' => ['gen_info' => $params]]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function delete($params)
+    {
+        return $this->client->request([
+            'customer' => ['del' => ['filter' => $params]]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function get($params)
     {
         return $this->client->request([

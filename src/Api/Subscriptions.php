@@ -18,10 +18,32 @@ class Subscriptions extends Operator
      * @param $params
      * @return mixed
      */
+    public function create($params)
+    {
+        return $this->client->request([
+            'webspace' => ['add' => $params]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function delete($params)
+    {
+        return $this->client->request([
+            'webspace' => ['del' => ['filter' => $params]]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function get($params)
     {
         return $this->client->request([
-            'webspace' => ['get' => ['filter' => $params, 'dataset' => ['aps-filter' => [], 'disk_usage' => [], 'gen_info' => [], 'hosting' => [], /*'hosting-basic' => [],*/ 'limits' => [], 'mail' => [], 'packages' => [], 'performance' => [], 'permissions' => [], 'php-settings' => [], 'plan-items' => [], 'prefs' => [], 'resource-usage' => [], 'stat' => [], 'subscriptions' => []]]]
+            'webspace' => ['get' => ['filter' => $params, 'dataset' => ['aps-filter' => [], 'disk_usage' => [], 'gen_info' => [], 'hosting' => [], 'limits' => [], 'mail' => [], 'packages' => [], 'performance' => [], 'permissions' => [], 'php-settings' => [], 'plan-items' => [], 'prefs' => [], 'resource-usage' => [], 'stat' => [], 'subscriptions' => []]]]
         ]);
     }
 
