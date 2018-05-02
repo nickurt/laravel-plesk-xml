@@ -32,6 +32,22 @@ class Base
     protected $password;
 
     /**
+     * @return Aps
+     */
+    public function aps()
+    {
+        return new \nickurt\PleskXml\Api\Aps($this);
+    }
+
+    /**
+     * @return Certificates
+     */
+    public function certificates()
+    {
+        return new \nickurt\PleskXml\Api\Certificates($this);
+    }
+
+    /**
      * @return Customers
      */
     public function customers()
@@ -40,11 +56,19 @@ class Base
     }
 
     /**
-     * @return Database
+     * @return Databases
      */
     public function databases()
     {
         return new \nickurt\PleskXml\Api\Databases($this);
+    }
+
+    /**
+     * @return DatabasesServers
+     */
+    public function databasesservers()
+    {
+        return new \nickurt\PleskXml\Api\DatabasesServers($this);
     }
 
     /**
@@ -53,6 +77,14 @@ class Base
     public function dns()
     {
         return new \nickurt\PleskXml\Api\Dns($this);
+    }
+
+    /**
+     * @return Extensions
+     */
+    public function extensions()
+    {
+        return new \nickurt\PleskXml\Api\Extensions($this);
     }
 
     /**
@@ -72,11 +104,35 @@ class Base
     }
 
     /**
+     * @return Git
+     */
+    public function git()
+    {
+        return new \nickurt\PleskXml\Api\Git($this);
+    }
+
+    /**
+     * @return Ip
+     */
+    public function ip()
+    {
+        return new \nickurt\PleskXml\Api\Ip($this);
+    }
+
+    /**
      * @return Locales
      */
     public function locales()
     {
         return new \nickurt\PleskXml\Api\Locales($this);
+    }
+
+    /**
+     * @return LogRotations
+     */
+    public function logrotations()
+    {
+        return new \nickurt\PleskXml\Api\LogRotations($this);
     }
 
     /**
@@ -149,6 +205,22 @@ class Base
     public function getApiVersion()
     {
         return $this->version;
+    }
+
+    /**
+     * @return Resellers
+     */
+    public function resellers()
+    {
+        return new \nickurt\PleskXml\Api\Resellers($this);
+    }
+
+    /**
+     * @return ResellersPlans
+     */
+    public function resellersplans()
+    {
+        return new \nickurt\PleskXml\Api\ResellersPlans($this);
     }
 
     /**

@@ -2,25 +2,15 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Plesk extends Operator
+class Aps extends Operator
 {
     /**
      * @return mixed
      */
-    public function additional_key()
+    public function all()
     {
         return $this->client->request([
-            'server' => ['get_additional_key' => []]
-        ]);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function information()
-    {
-        return $this->client->request([
-            'server' => ['get' => ['admin' => []]]
+            'aps' => ['get-packages-list' => ['filter' => []]]
         ]);
     }
 
@@ -28,40 +18,54 @@ class Plesk extends Operator
      * @param $params
      * @return mixed
      */
-    public function install_key($params)
+    public function download($params)
     {
         return $this->client->request([
-            'server' => ['lic_install' => $params]
+            'aps' => ['download-package' => $params]
         ]);
     }
 
     /**
+     * @param $params
      * @return mixed
      */
-    public function key()
+    public function import_config($params)
     {
         return $this->client->request([
-            'server' => ['get' => ['key' => []]]
+            'aps' => ['import-config' => $params]
         ]);
     }
 
     /**
+     * @param $params
      * @return mixed
      */
-    public function rollback_key()
+    public function import_package($params)
     {
         return $this->client->request([
-            'server' => ['license-rollback-key' => []]
+            'aps' => ['import-package' => $params]
         ]);
     }
 
     /**
+     * @param $params
      * @return mixed
      */
-    public function services()
+    public function install($params)
     {
         return $this->client->request([
-            'server' => ['get' => ['services_state' => []]]
+            'aps' => ['install' => $params]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function task($params)
+    {
+        return $this->client->request([
+            'aps' => ['get-download-status' => ['filter' => $params]]
         ]);
     }
 }

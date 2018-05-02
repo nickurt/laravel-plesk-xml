@@ -2,25 +2,15 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Plesk extends Operator
+class DatabasesServers extends Operator
 {
     /**
      * @return mixed
      */
-    public function additional_key()
+    public function all()
     {
         return $this->client->request([
-            'server' => ['get_additional_key' => []]
-        ]);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function information()
-    {
-        return $this->client->request([
-            'server' => ['get' => ['admin' => []]]
+            'db_server' => ['get' => ['filter' => []]]
         ]);
     }
 
@@ -28,40 +18,53 @@ class Plesk extends Operator
      * @param $params
      * @return mixed
      */
-    public function install_key($params)
+    public function create($params)
     {
         return $this->client->request([
-            'server' => ['lic_install' => $params]
+            'db_server' => ['add' => $params]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function delete($params)
+    {
+        return $this->client->request([
+            'db_server' => ['del' => ['filter' => $params]]
+        ]);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function get($params)
+    {
+        return $this->client->request([
+            'db_server' => ['get' => ['filter' => $params]]
         ]);
     }
 
     /**
      * @return mixed
      */
-    public function key()
+    public function types()
     {
         return $this->client->request([
-            'server' => ['get' => ['key' => []]]
+            'db_server' => ['get-supported-types' => []]
         ]);
     }
 
     /**
+     * @param $params
      * @return mixed
      */
-    public function rollback_key()
+    public function local($params)
     {
         return $this->client->request([
-            'server' => ['license-rollback-key' => []]
-        ]);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function services()
-    {
-        return $this->client->request([
-            'server' => ['get' => ['services_state' => []]]
+            'db_server' => ['get-local' => ['filter' => $params]]
         ]);
     }
 }
