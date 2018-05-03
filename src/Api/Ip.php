@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Ip extends Operator
+class Ip extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'ip' => ['get' => []]
         ]);
     }
@@ -20,7 +20,7 @@ class Ip extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'ip' => ['add' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class Ip extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'ip' => ['del' => ['filter' => $params]]
         ]);
     }

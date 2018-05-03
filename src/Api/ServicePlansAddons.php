@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class ServicePlansAddons extends Operator
+class ServicePlansAddons extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'service-plan-addon' => ['get' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class ServicePlansAddons extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'service-plan-addon' => ['get' => ['filter' => $params]]
         ]);
     }

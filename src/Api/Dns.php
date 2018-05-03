@@ -2,7 +2,7 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Dns extends Operator
+class Dns extends AbstractApi
 {
     /**
      * @param $params
@@ -10,7 +10,7 @@ class Dns extends Operator
      */
     public function all($params)
     {
-        return $this->client->request([
+        return $this->post([
             'dns' => ['get_rec' => ['filter' => $params]]
         ]);
     }
@@ -21,7 +21,7 @@ class Dns extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'dns' => ['add_rec' => $params]
         ]);
     }
@@ -32,7 +32,7 @@ class Dns extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'dns' => ['del_rec' => ['filter' => $params]]
         ]);
     }

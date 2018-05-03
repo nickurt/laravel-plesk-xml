@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class SitesAliases extends Operator
+class SitesAliases extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'site-alias' => ['get' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class SitesAliases extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'site-alias' => ['create' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class SitesAliases extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'site-alias' => ['delete' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class SitesAliases extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'site-alias' => ['get' => ['filter' => $params]]
         ]);
     }

@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Subdomains extends Operator
+class Subdomains extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'subdomain' => ['get' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class Subdomains extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'subdomain' => ['add' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class Subdomains extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'subdomain' => ['del' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class Subdomains extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'subdomain' => ['get' => ['filter' => $params]]
         ]);
     }

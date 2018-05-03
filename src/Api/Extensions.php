@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Extensions extends Operator
+class Extensions extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['get' => []]
         ]);
     }
@@ -20,7 +20,7 @@ class Extensions extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class Extensions extends Operator
      */
     public function install($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['install' => $params]
         ]);
     }
@@ -42,7 +42,7 @@ class Extensions extends Operator
      */
     public function uninstall($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['uninstall' => $params]
         ]);
     }

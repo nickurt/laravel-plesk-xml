@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class DatabasesServers extends Operator
+class DatabasesServers extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'db_server' => ['get' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class DatabasesServers extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'db_server' => ['add' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class DatabasesServers extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'db_server' => ['del' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class DatabasesServers extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'db_server' => ['get' => ['filter' => $params]]
         ]);
     }
@@ -52,7 +52,7 @@ class DatabasesServers extends Operator
      */
     public function types()
     {
-        return $this->client->request([
+        return $this->post([
             'db_server' => ['get-supported-types' => []]
         ]);
     }
@@ -63,7 +63,7 @@ class DatabasesServers extends Operator
      */
     public function local($params)
     {
-        return $this->client->request([
+        return $this->post([
             'db_server' => ['get-local' => ['filter' => $params]]
         ]);
     }

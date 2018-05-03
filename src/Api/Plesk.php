@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Plesk extends Operator
+class Plesk extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function additional_key()
     {
-        return $this->client->request([
+        return $this->post([
             'server' => ['get_additional_key' => []]
         ]);
     }
@@ -19,7 +19,7 @@ class Plesk extends Operator
      */
     public function information()
     {
-        return $this->client->request([
+        return $this->post([
             'server' => ['get' => ['admin' => []]]
         ]);
     }
@@ -30,7 +30,7 @@ class Plesk extends Operator
      */
     public function install_key($params)
     {
-        return $this->client->request([
+        return $this->post([
             'server' => ['lic_install' => $params]
         ]);
     }
@@ -40,7 +40,7 @@ class Plesk extends Operator
      */
     public function key()
     {
-        return $this->client->request([
+        return $this->post([
             'server' => ['get' => ['key' => []]]
         ]);
     }
@@ -50,7 +50,7 @@ class Plesk extends Operator
      */
     public function rollback_key()
     {
-        return $this->client->request([
+        return $this->post([
             'server' => ['license-rollback-key' => []]
         ]);
     }
@@ -60,7 +60,7 @@ class Plesk extends Operator
      */
     public function services()
     {
-        return $this->client->request([
+        return $this->post([
             'server' => ['get' => ['services_state' => []]]
         ]);
     }

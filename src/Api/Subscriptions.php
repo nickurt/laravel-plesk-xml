@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Subscriptions extends Operator
+class Subscriptions extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'webspace' => ['get' => ['filter' => [], 'dataset' => ['gen_info' => [], 'hosting' => [], 'subscriptions' => []]]]
         ]);
     }
@@ -20,7 +20,7 @@ class Subscriptions extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'webspace' => ['add' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class Subscriptions extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'webspace' => ['del' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class Subscriptions extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'webspace' => ['get' => ['filter' => $params, 'dataset' => ['aps-filter' => [], 'disk_usage' => [], 'gen_info' => [], 'hosting' => [], 'limits' => [], 'mail' => [], 'packages' => [], 'performance' => [], 'permissions' => [], 'php-settings' => [], 'plan-items' => [], 'prefs' => [], 'resource-usage' => [], 'stat' => [], 'subscriptions' => []]]]
         ]);
     }
@@ -53,7 +53,7 @@ class Subscriptions extends Operator
      */
     public function hosting($params)
     {
-        return $this->client->request([
+        return $this->post([
             'webspace' => ['get-physical-hosting-descriptor' => ['filter' => $params]]
         ]);
     }
@@ -64,7 +64,7 @@ class Subscriptions extends Operator
      */
     public function limits($params)
     {
-        return $this->client->request([
+        return $this->post([
             'webspace' => ['get-limit-descriptor' => ['filter' => $params]]
         ]);
     }
@@ -75,7 +75,7 @@ class Subscriptions extends Operator
      */
     public function permissions($params)
     {
-        return $this->client->request([
+        return $this->post([
             'webspace' => ['get-permission-descriptor' => ['filter' => $params]]
         ]);
     }
@@ -86,7 +86,7 @@ class Subscriptions extends Operator
      */
     public function traffic($params)
     {
-        return $this->client->request([
+        return $this->post([
             'webspace' => ['get_traffic' => ['filter' => $params]]
         ]);
     }

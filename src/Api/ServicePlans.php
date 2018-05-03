@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class ServicePlans extends Operator
+class ServicePlans extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'service-plan' => ['get' => ['filter' => [], 'owner-all' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class ServicePlans extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'service-plan' => ['add' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class ServicePlans extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'service-plan' => ['del' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class ServicePlans extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'service-plan' => ['get' => ['filter' => $params, 'owner-all' => []]]
         ]);
     }

@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Nodejs extends Operator
+class Nodejs extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['nodejs' => ['versions' => []]]]
         ]);
     }
@@ -20,7 +20,7 @@ class Nodejs extends Operator
      */
     public function disable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['nodejs' => ['disable' => $params]]]
         ]);
     }
@@ -31,7 +31,7 @@ class Nodejs extends Operator
      */
     public function enable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['nodejs' => ['enable' => $params]]]
         ]);
     }

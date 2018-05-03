@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class SecretKeys extends Operator
+class SecretKeys extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'secret_key' => ['get_info' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class SecretKeys extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'secret_key' => ['create' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class SecretKeys extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'secret_key' => ['delete' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class SecretKeys extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'secret_key' => ['get_info' => ['filter' => $params]]
         ]);
     }

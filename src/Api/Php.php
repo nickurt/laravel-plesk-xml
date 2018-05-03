@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Php extends Operator
+class Php extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'php-handler' => ['get' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class Php extends Operator
      */
     public function disable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'php-handler' => ['disable' => ['filter' => $params]]
         ]);
     }
@@ -31,7 +31,7 @@ class Php extends Operator
      */
     public function enable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'php-handler' => ['enable' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class Php extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'php-handler' => ['get' => ['filter' => $params]]
         ]);
     }
@@ -53,7 +53,7 @@ class Php extends Operator
      */
     public function usage($params)
     {
-        return $this->client->request([
+        return $this->post([
             'php-handler' => ['get-usage' => ['filter' => $params]]
         ]);
     }

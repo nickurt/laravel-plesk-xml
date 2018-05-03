@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Sessions extends Operator
+class Sessions extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'session' => ['get' => []]
         ]);
     }
@@ -19,7 +19,7 @@ class Sessions extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'server' => ['create_session' => ['login' => $params, 'data' => ['user_ip' => base64_encode(request()->ip()), 'source_server' => '']]]
         ]);
     }
@@ -30,7 +30,7 @@ class Sessions extends Operator
      */
     public function terminate($params)
     {
-        return $this->client->request([
+        return $this->post([
             'session' => ['terminate' => $params]
         ]);
     }

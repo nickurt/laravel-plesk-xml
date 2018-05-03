@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class LogRotations extends Operator
+class LogRotations extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'log-rotation' => ['get' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class LogRotations extends Operator
      */
     public function disable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'log-rotation' => ['disable' => ['filter' => $params]]
         ]);
     }
@@ -31,7 +31,7 @@ class LogRotations extends Operator
      */
     public function enable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'log-rotation' => ['enable' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class LogRotations extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'log-rotation' => ['get' => ['filter' => $params]]
         ]);
     }
@@ -53,7 +53,7 @@ class LogRotations extends Operator
      */
     public function status($params)
     {
-        return $this->client->request([
+        return $this->post([
             'log-rotation' => ['get-status' => ['filter' => $params]]
         ]);
     }

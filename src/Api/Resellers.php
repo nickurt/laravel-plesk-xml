@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Resellers extends Operator
+class Resellers extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'reseller' => ['get' => ['filter' => [], 'dataset' => ['gen-info' => [], 'stat' => [], 'permissions' => [], 'limits' => [], 'ippool' => []]]]
         ]);
     }
@@ -20,7 +20,7 @@ class Resellers extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller' => ['add' => ['gen-info' => $params]]
         ]);
     }
@@ -31,7 +31,7 @@ class Resellers extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller' => ['del' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class Resellers extends Operator
      */
     public function domains($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller' => ['get-domain-list' => ['filter' => $params]]
         ]);
     }
@@ -53,7 +53,7 @@ class Resellers extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller' => ['get' => ['filter' => $params, 'dataset' => ['gen-info' => [], 'stat' => [], 'permissions' => [], 'limits' => [], 'ippool' => []]]]
         ]);
     }
@@ -64,7 +64,7 @@ class Resellers extends Operator
      */
     public function limits($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller' => ['get-limit-descriptor' => ['filter' => $params]]
         ]);
     }
@@ -75,7 +75,7 @@ class Resellers extends Operator
      */
     public function permissions($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller' => ['get-permission-descriptor' => ['filter' => $params]]
         ]);
     }

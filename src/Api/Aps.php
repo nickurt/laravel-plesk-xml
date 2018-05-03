@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Aps extends Operator
+class Aps extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'aps' => ['get-packages-list' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class Aps extends Operator
      */
     public function download($params)
     {
-        return $this->client->request([
+        return $this->post([
             'aps' => ['download-package' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class Aps extends Operator
      */
     public function import_config($params)
     {
-        return $this->client->request([
+        return $this->post([
             'aps' => ['import-config' => $params]
         ]);
     }
@@ -42,7 +42,7 @@ class Aps extends Operator
      */
     public function import_package($params)
     {
-        return $this->client->request([
+        return $this->post([
             'aps' => ['import-package' => $params]
         ]);
     }
@@ -53,7 +53,7 @@ class Aps extends Operator
      */
     public function install($params)
     {
-        return $this->client->request([
+        return $this->post([
             'aps' => ['install' => $params]
         ]);
     }
@@ -64,7 +64,7 @@ class Aps extends Operator
      */
     public function task($params)
     {
-        return $this->client->request([
+        return $this->post([
             'aps' => ['get-download-status' => ['filter' => $params]]
         ]);
     }

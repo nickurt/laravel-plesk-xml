@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Sites extends Operator
+class Sites extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'site' => ['get' => ['filter' => [], 'dataset' => ['gen_info' => [], 'hosting' => [], 'stat' => [], 'prefs' => [], 'disk_usage' => []]]]
         ]);
     }
@@ -20,7 +20,7 @@ class Sites extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'site' => ['add' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class Sites extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'site' => ['del' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class Sites extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'site' => ['get' => ['filter' => $params, 'dataset' => ['gen_info' => [], 'hosting' => [], 'stat' => [], 'prefs' => [], 'disk_usage' => []]]]
         ]);
     }
@@ -53,7 +53,7 @@ class Sites extends Operator
      */
     public function traffic($params)
     {
-        return $this->client->request([
+        return $this->post([
             'site' => ['get_traffic' => ['filter' => $params]]
         ]);
     }

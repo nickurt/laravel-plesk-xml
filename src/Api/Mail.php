@@ -2,7 +2,7 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Mail extends Operator
+class Mail extends AbstractApi
 {
     /**
      * @param $params
@@ -10,7 +10,7 @@ class Mail extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'mail' => ['create' => ['filter' => $params]]
         ]);
     }
@@ -21,7 +21,7 @@ class Mail extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'mail' => ['remove' => ['filter' => $params]]
         ]);
     }
@@ -32,7 +32,7 @@ class Mail extends Operator
      */
     public function disable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'mail' => ['disable' => $params]
         ]);
     }
@@ -43,7 +43,7 @@ class Mail extends Operator
      */
     public function enable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'mail' => ['enable' => $params]
         ]);
     }
@@ -54,7 +54,7 @@ class Mail extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'mail' => ['get_info' => ['filter' => $params, 'mailbox' => [], 'mailbox-usage' => [], 'forwarding' => [], 'aliases' => [], 'autoresponder' => []]]
         ]);
     }
@@ -65,7 +65,7 @@ class Mail extends Operator
      */
     public function prefs($params)
     {
-        return $this->client->request([
+        return $this->post([
             'mail' => ['get_prefs' => ['filter' => $params]]
         ]);
     }

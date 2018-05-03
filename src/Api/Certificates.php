@@ -2,7 +2,7 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Certificates extends Operator
+class Certificates extends AbstractApi
 {
     /**
      * @param $params
@@ -10,7 +10,7 @@ class Certificates extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'certificate' => ['remove' => ['filter' => $params]]
         ]);
     }
@@ -21,7 +21,7 @@ class Certificates extends Operator
      */
     public function domain($params)
     {
-        return $this->client->request([
+        return $this->post([
             'certificate' => ['get-pool' => ['filter' => $params]]
         ]);
     }
@@ -32,7 +32,7 @@ class Certificates extends Operator
      */
     public function generate($params)
     {
-        return $this->client->request([
+        return $this->post([
             'certificate' => ['generate' => $params]
         ]);
     }
@@ -43,7 +43,7 @@ class Certificates extends Operator
      */
     public function install($params)
     {
-        return $this->client->request([
+        return $this->post([
             'certificate' => ['install' => $params]
         ]);
     }

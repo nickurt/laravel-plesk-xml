@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Customers extends Operator
+class Customers extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'customer' => ['get' => ['filter' => [], 'dataset' => ['gen_info' => [], 'stat' => []]]]
         ]);
     }
@@ -20,7 +20,7 @@ class Customers extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'customer' => ['add' => ['gen_info' => $params]]
         ]);
     }
@@ -31,7 +31,7 @@ class Customers extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'customer' => ['del' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class Customers extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'customer' => ['get' => ['filter' => $params, 'dataset' => ['gen_info' => [], 'stat' => []]]]
         ]);
     }

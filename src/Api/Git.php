@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Git extends Operator
+class Git extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['git' => ['get' => []]]]
         ]);
     }
@@ -20,7 +20,7 @@ class Git extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['git' => ['create' => $params]]]
         ]);
     }
@@ -31,7 +31,7 @@ class Git extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['git' => ['remove' => $params]]]
         ]);
     }
@@ -42,7 +42,7 @@ class Git extends Operator
      */
     public function deploy($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['git' => ['deploy' => $params]]]
         ]);
     }
@@ -53,7 +53,7 @@ class Git extends Operator
      */
     public function fetch($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['git' => ['fetch' => $params]]]
         ]);
     }
@@ -64,7 +64,7 @@ class Git extends Operator
      */
     public function update($params)
     {
-        return $this->client->request([
+        return $this->post([
             'extension' => ['call' => ['git' => ['update' => $params]]]
         ]);
     }

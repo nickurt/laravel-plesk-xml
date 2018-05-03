@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class Locales extends Operator
+class Locales extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'locale' => ['get' => ['filter' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class Locales extends Operator
      */
     public function disable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'locale' => ['disable' => ['filter' => $params]]
         ]);
     }
@@ -31,7 +31,7 @@ class Locales extends Operator
      */
     public function enable($params)
     {
-        return $this->client->request([
+        return $this->post([
             'locale' => ['enable' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class Locales extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'locale' => ['get' => ['filter' => $params]]
         ]);
     }

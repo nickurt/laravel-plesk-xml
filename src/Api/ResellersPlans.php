@@ -2,14 +2,14 @@
 
 namespace nickurt\PleskXml\Api;
 
-class ResellersPlans extends Operator
+class ResellersPlans extends AbstractApi
 {
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->client->request([
+        return $this->post([
             'reseller-plan' => ['get' => ['filter' => ['all' => []], 'limits' => [], 'permissions' => []]]
         ]);
     }
@@ -20,7 +20,7 @@ class ResellersPlans extends Operator
      */
     public function create($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller-plan' => ['add' => $params]
         ]);
     }
@@ -31,7 +31,7 @@ class ResellersPlans extends Operator
      */
     public function delete($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller-plan' => ['del' => ['filter' => $params]]
         ]);
     }
@@ -42,7 +42,7 @@ class ResellersPlans extends Operator
      */
     public function get($params)
     {
-        return $this->client->request([
+        return $this->post([
             'reseller-plan' => ['get' => ['filter' => $params, 'limits' => [], 'permissions' => []]]
         ]);
     }
