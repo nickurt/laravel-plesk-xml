@@ -20,6 +20,37 @@ class Client implements ClientInterface
     ];
 
     /**
+     * @var array
+     */
+    private $classes = [
+        'aps' => 'Aps',
+        'certificates' => 'Certificates',
+        'customers' => 'Customers',
+        'databases' => 'Databases',
+        'databasesservers' => 'DatabasesServers',
+        'dns' => 'Dns',
+        'extensions' => 'Extensions',
+        'git' => 'Git',
+        'ip' => 'Ip',
+        'locales' => 'Locales',
+        'logrotations' => 'LogRotations',
+        'mail' => 'Mail',
+        'nodejs' => 'Nodejs',
+        'php' => 'Php',
+        'plesk' => 'Plesk',
+        'resellers' => 'Resellers',
+        'resellersplans' => 'ResellersPlans',
+        'secretkeys' => 'SecretKeys',
+        'serviceplans' => 'ServicePlans',
+        'serviceplansaddons' => 'ServicePlansAddons',
+        'sessions' => 'Sessions',
+        'sites' => 'Sites',
+        'sitesaliases' => 'SitesAliases',
+        'subdomains' => 'Subdomains',
+        'subscriptions' => 'Subscriptions',
+    ];
+
+    /**
      * @param $method
      * @param $args
      * @return Api\Aps|Api\Certificates
@@ -39,88 +70,13 @@ class Client implements ClientInterface
      */
     public function api($name)
     {
-        switch ($name) {
-            case 'aps':
-                $api = new \nickurt\PleskXml\Api\Aps($this);
-                break;
-            case 'certificates':
-                $api = new \nickurt\PleskXml\Api\Certificates($this);
-                break;
-            case 'customers':
-                $api = new \nickurt\PleskXml\Api\Customers($this);
-                break;
-            case 'databases':
-                $api = new \nickurt\PleskXml\Api\Databases($this);
-                break;
-            case 'databasesservers':
-                $api = new \nickurt\PleskXml\Api\DatabasesServers($this);
-                break;
-            case 'dns':
-                $api = new \nickurt\PleskXml\Api\Dns($this);
-                break;
-            case 'extensions':
-                $api = new \nickurt\PleskXml\Api\Extensions($this);
-                break;
-            case 'git':
-                $api = new \nickurt\PleskXml\Api\Git($this);
-                break;
-            case 'ip':
-                $api = new \nickurt\PleskXml\Api\Ip($this);
-                break;
-            case 'locales':
-                $api = new \nickurt\PleskXml\Api\Locales($this);
-                break;
-            case 'logrotations':
-                $api = new \nickurt\PleskXml\Api\LogRotations($this);
-                break;
-            case 'mail':
-                $api = new \nickurt\PleskXml\Api\Mail($this);
-                break;
-            case 'nodejs':
-                $api = new \nickurt\PleskXml\Api\Nodejs($this);
-                break;
-            case 'php':
-                $api = new \nickurt\PleskXml\Api\Php($this);
-                break;
-            case 'plesk':
-                $api = new \nickurt\PleskXml\Api\Plesk($this);
-                break;
-            case 'resellers':
-                $api = new \nickurt\PleskXml\Api\Resellers($this);
-                break;
-            case 'resellersplans':
-                $api = new \nickurt\PleskXml\Api\ResellersPlans($this);
-                break;
-            case 'secretkeys':
-                $api = new \nickurt\PleskXml\Api\SecretKeys($this);
-                break;
-            case 'serviceplans':
-                $api = new \nickurt\PleskXml\Api\ServicePlans($this);
-                break;
-            case 'serviceplansaddons':
-                $api = new \nickurt\PleskXml\Api\ServicePlansAddons($this);
-                break;
-            case 'sessions':
-                $api = new \nickurt\PleskXml\Api\Sessions($this);
-                break;
-            case 'sites':
-                $api = new \nickurt\PleskXml\Api\Sites($this);
-                break;
-            case 'sitesaliases':
-                $api = new \nickurt\PleskXml\Api\SitesAliases($this);
-                break;
-            case 'subdomains':
-                $api = new \nickurt\PleskXml\Api\Subdomains($this);
-                break;
-            case 'subscriptions':
-                $api = new \nickurt\PleskXml\Api\Subscriptions($this);
-                break;
-            default:
-                throw new \InvalidArgumentException(sprintf('Undefined method called:"%s"', $name));
-                break;
+        if(!isset($this->classes[$name])) {
+            throw new \InvalidArgumentException(sprintf('Undefined method called:"%s"', $name));
         }
 
-        return $api;
+        $class = '\\nickurt\PleskXml\\Api\\' . $this->classes[$name];
+
+        return new $class($this);
     }
 
     /**
