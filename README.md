@@ -3,39 +3,50 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Tests](#tests)
-
 ### Installation
 Install this package with composer:
 ```
 composer require nickurt/laravel-plesk-xml:1.*
 ```
-
 Add the provider to config/app.php file
-
 ```php
 'nickurt\PleskXml\ServiceProvider',
 ```
-
 and the facade in the file
-
 ```php
 'PleskXml' => 'nickurt\PleskXml\Facade',
 ```
-
 Copy the config files for the PleskXml-plugin
-
 ```
 php artisan vendor:publish --provider="nickurt\PleskXml\ServiceProvider" --tag="config"
 ```
-
 Add the Plesk credentials to your .env file
 ```
 PLESK_DEFAULT_HOST=
 PLESK_DEFAULT_USERNAME=
 PLESK_DEFAULT_PASSWORD=
 ```
-## Usage
-### Aps
+### Usage
+#### Dependency injection [e.g. by using multiple servers]
+```php
+// Route
+Route::get('/plesk/{plesk}/customers', ['as' => 'plesk/customers', 'uses' => 'CustomersController@getIndex']);
+
+Route::bind('plesk', function ($value, $route) {
+    app('PleskXml')->server($value);
+
+    return app('PleskXml');
+});
+
+// CustomersController
+public function getIndex(Plesk $plesk)
+{
+    $customers = $plesk->customers()->all();
+
+    //
+}
+```
+#### Aps
 ```php
 \PleskXml::aps()->all()
 \PleskXml::aps()->download(array $params)
@@ -44,21 +55,21 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::aps()->install(array $params)
 \PleskXml::aps()->task(array $params)
 ```
-### Certificates
+#### Certificates
 ```php
 \PleskXml::certificates()->delete(array $params)
 \PleskXml::certificates()->domain(array $params)
 \PleskXml::certificates()->generate(array $params)
 \PleskXml::certificates()->install(array $params)
 ```
-### Customers
+#### Customers
 ```php
 \PleskXml::customers()->all()
 \PleskXml::customers()->create(array $params)
 \PleskXml::customers()->delete(array $params)
 \PleskXml::customers()->get(array $params)
 ```
-### Databases
+#### Databases
 ```php
 \PleskXml::databases()->all()
 \PleskXml::databases()->create(array $params)
@@ -66,7 +77,7 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::databases()->get(array $params)
 \PleskXml::databases()->users(array $params)
 ```
-### Databases Servers
+#### Databases Servers
 ```php
 \PleskXml::databasesservers()->all()
 \PleskXml::databasesservers()->create(array $params)
@@ -75,20 +86,20 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::databasesservers()->types()
 \PleskXml::databasesservers()->local(array $params)
 ```
-### DNS
+#### DNS
 ```php
 \PleskXml::dns()->all(array $params)
 \PleskXml::dns()->create(array $params)
 \PleskXml::dns()->delete(array $params)
 ```
-### Extensions
+#### Extensions
 ```php
 \PleskXml::extensions()->all()
 \PleskXml::extensions()->get(array $params)
 \PleskXml::extensions()->install(array $params)
 \PleskXml::extensions()->uninstall(array $params)
 ```
-### Git
+#### Git
 ```php
 \PleskXml::git()->all()
 \PleskXml::git()->create(array $params)
@@ -97,20 +108,20 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::git()->fetch(array $params)
 \PleskXml::git()->update(array $params)
 ```
-### Ip
+#### Ip
 ```php
 \PleskXml::ip()->all()
 \PleskXml::ip()->create(array $params)
 \PleskXml::ip()->delete(array $params)
 ```
-### Locales
+#### Locales
 ```php
 \PleskXml::locales()->all()
 \PleskXml::locales()->disable(array $params)
 \PleskXml::locales()->enable(array $params)
 \PleskXml::locales()->get(array $params)
 ```
-### LogRotations 
+#### LogRotations 
 ```php
 \PleskXml::logrotations()->all()
 \PleskXml::logrotations()->disable(array $params)
@@ -118,7 +129,7 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::logrotations()->get(array $params)
 \PleskXml::logrotations()->status(array $params)
 ```
-### Mail
+#### Mail
 ```php
 \PleskXml::mail()->create(array $params)
 \PleskXml::mail()->delete(array $params)
@@ -127,13 +138,13 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::mail()->get(array $params)
 \PleskXml::mail()->prefs(array $params)
 ```
-### NodeJS 
+#### NodeJS 
 ```php
 \PleskXml::nodejs()->all()
 \PleskXml::nodejs()->disable(array $params)
 \PleskXml::nodejs()->enable(array $params)
 ```
-### Php 
+#### Php 
 ```php
 \PleskXml::php()->all()
 \PleskXml::php()->disable(array $params)
@@ -141,7 +152,7 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::php()->get(array $params)
 \PleskXml::php()->usage(array $params)
 ```
-### Plesk 
+#### Plesk 
 ```php
 \PleskXml::plesk()->additional_key()
 \PleskXml::plesk()->information()
@@ -150,7 +161,7 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::plesk()->rollback_key()
 \PleskXml::plesk()->services()
 ```
-### Resellers 
+#### Resellers 
 ```php
 \PleskXml::resellers()->all()
 \PleskXml::resellers()->create(array $params)
@@ -160,39 +171,39 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::resellers()->limits(array $params)
 \PleskXml::resellers()->permissions(array $params)
 ```
-### Resellers Plans
+#### Resellers Plans
 ```php
 \PleskXml::resellersplans()->all()
 \PleskXml::resellersplans()->create(array $params)
 \PleskXml::resellersplans()->delete(array $params)
 \PleskXml::resellersplans()->get(array $params)
 ```
-### SecretKeys
+#### SecretKeys
 ```php
 \PleskXml::secretkeys()->all()
 \PleskXml::secretkeys()->create(array $params)
 \PleskXml::secretkeys()->delete(array $params)
 \PleskXml::secretkeys()->get(array $params)
 ```
-### ServicePlans
+#### ServicePlans
 ```php
 \PleskXml::serviceplans()->all()
 \PleskXml::serviceplans()->create(array $params)
 \PleskXml::serviceplans()->delete(array $params)
 \PleskXml::serviceplans()->get(array $params)
 ```
-### ServicePlans Addons
+#### ServicePlans Addons
 ```php
 \PleskXml::serviceplansaddons()->all()
 \PleskXml::serviceplansaddons()->get(array $params)
 ```
-### Sessions
+#### Sessions
 ```php
 \PleskXml::sessions()->all()
 \PleskXml::sessions()->create(array $params)
 \PleskXml::sessions()->terminate(array $params)
 ```
-### Sites
+#### Sites
 ```php
 \PleskXml::sites()->all()
 \PleskXml::sites()->create(array $params)
@@ -200,21 +211,21 @@ PLESK_DEFAULT_PASSWORD=
 \PleskXml::sites()->get(array $params)
 \PleskXml::sites()->traffic(array $params)
 ```
-### SitesAliases
+#### SitesAliases
 ```php
 \PleskXml::sitesaliases()->all()
 \PleskXml::sitesaliases()->create(array $params)
 \PleskXml::sitesaliases()->delete(array $params)
 \PleskXml::sitesaliases()->get(array $params)
 ```
-### Subdomains
+#### Subdomains
 ```php
 \PleskXml::subdomains()->all()
 \PleskXml::subdomains()->create(array $params)
 \PleskXml::subdomains()->delete(array $params)
 \PleskXml::subdomains()->get(array $params)
 ```
-### Subscriptions
+#### Subscriptions
 ```php
 \PleskXml::subscriptions()->all()
 \PleskXml::subscriptions()->create(array $params)
