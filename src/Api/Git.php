@@ -6,6 +6,7 @@ class Git extends AbstractApi
 {
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function all()
     {
@@ -17,6 +18,7 @@ class Git extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function create($params)
     {
@@ -28,6 +30,7 @@ class Git extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function delete($params)
     {
@@ -39,6 +42,7 @@ class Git extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function deploy($params)
     {
@@ -50,6 +54,7 @@ class Git extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function fetch($params)
     {
@@ -61,6 +66,7 @@ class Git extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function update($params)
     {

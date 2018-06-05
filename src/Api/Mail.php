@@ -7,6 +7,7 @@ class Mail extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function create($params)
     {
@@ -18,6 +19,7 @@ class Mail extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function delete($params)
     {
@@ -29,6 +31,7 @@ class Mail extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function disable($params)
     {
@@ -40,6 +43,7 @@ class Mail extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function enable($params)
     {
@@ -51,6 +55,7 @@ class Mail extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function get($params)
     {
@@ -62,6 +67,7 @@ class Mail extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function prefs($params)
     {

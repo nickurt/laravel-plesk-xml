@@ -6,6 +6,7 @@ class Sessions extends AbstractApi
 {
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function all()
     {
@@ -15,7 +16,9 @@ class Sessions extends AbstractApi
     }
 
     /**
+     * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function create($params)
     {
@@ -27,6 +30,7 @@ class Sessions extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function terminate($params)
     {

@@ -6,6 +6,7 @@ class Aps extends AbstractApi
 {
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function all()
     {
@@ -17,6 +18,7 @@ class Aps extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function download($params)
     {
@@ -28,6 +30,7 @@ class Aps extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function import_config($params)
     {
@@ -39,6 +42,7 @@ class Aps extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function import_package($params)
     {
@@ -50,6 +54,7 @@ class Aps extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function install($params)
     {
@@ -61,6 +66,7 @@ class Aps extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function task($params)
     {

@@ -6,6 +6,7 @@ class Sites extends AbstractApi
 {
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function all()
     {
@@ -17,6 +18,7 @@ class Sites extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function create($params)
     {
@@ -28,6 +30,7 @@ class Sites extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function delete($params)
     {
@@ -39,6 +42,7 @@ class Sites extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function get($params)
     {
@@ -50,6 +54,7 @@ class Sites extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function traffic($params)
     {

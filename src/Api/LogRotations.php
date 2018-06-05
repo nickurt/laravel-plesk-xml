@@ -6,6 +6,7 @@ class LogRotations extends AbstractApi
 {
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function all()
     {
@@ -17,6 +18,7 @@ class LogRotations extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function disable($params)
     {
@@ -28,6 +30,7 @@ class LogRotations extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function enable($params)
     {
@@ -39,6 +42,7 @@ class LogRotations extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function get($params)
     {
@@ -50,6 +54,7 @@ class LogRotations extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function status($params)
     {

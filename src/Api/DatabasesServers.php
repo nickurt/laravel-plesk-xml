@@ -6,6 +6,7 @@ class DatabasesServers extends AbstractApi
 {
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function all()
     {
@@ -17,6 +18,7 @@ class DatabasesServers extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function create($params)
     {
@@ -28,6 +30,7 @@ class DatabasesServers extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function delete($params)
     {
@@ -39,6 +42,7 @@ class DatabasesServers extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function get($params)
     {
@@ -49,6 +53,7 @@ class DatabasesServers extends AbstractApi
 
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function types()
     {
@@ -60,6 +65,7 @@ class DatabasesServers extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function local($params)
     {

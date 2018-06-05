@@ -6,6 +6,7 @@ class Plesk extends AbstractApi
 {
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function additional_key()
     {
@@ -16,6 +17,7 @@ class Plesk extends AbstractApi
 
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function information()
     {
@@ -27,6 +29,7 @@ class Plesk extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function install_key($params)
     {
@@ -37,6 +40,7 @@ class Plesk extends AbstractApi
 
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function key()
     {
@@ -47,6 +51,7 @@ class Plesk extends AbstractApi
 
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function rollback_key()
     {
@@ -57,6 +62,7 @@ class Plesk extends AbstractApi
 
     /**
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function services()
     {

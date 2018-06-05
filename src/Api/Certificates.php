@@ -7,6 +7,7 @@ class Certificates extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function delete($params)
     {
@@ -18,6 +19,7 @@ class Certificates extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function domain($params)
     {
@@ -29,6 +31,7 @@ class Certificates extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function generate($params)
     {
@@ -40,6 +43,7 @@ class Certificates extends AbstractApi
     /**
      * @param $params
      * @return mixed
+     * @throws \Http\Client\Exception
      */
     public function install($params)
     {
