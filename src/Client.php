@@ -30,6 +30,7 @@ class Client implements ClientInterface
         'databasesservers' => 'DatabasesServers',
         'dns' => 'Dns',
         'extensions' => 'Extensions',
+        'ftp' => 'Ftp',
         'git' => 'Git',
         'ip' => 'Ip',
         'locales' => 'Locales',

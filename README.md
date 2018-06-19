@@ -86,7 +86,7 @@ public function getIndex(Plesk $plesk)
 \PleskXml::databasesservers()->types()
 \PleskXml::databasesservers()->local(array $params)
 ```
-#### DNS
+#### Dns
 ```php
 \PleskXml::dns()->all(array $params)
 \PleskXml::dns()->create(array $params)
@@ -98,6 +98,14 @@ public function getIndex(Plesk $plesk)
 \PleskXml::extensions()->get(array $params)
 \PleskXml::extensions()->install(array $params)
 \PleskXml::extensions()->uninstall(array $params)
+```
+#### Ftp
+```php
+\PleskXml::ftp()->all()
+\PleskXml::ftp()->create(array $params)
+\PleskXml::ftp()->delete(array $params)
+\PleskXml::ftp()->get(array $params)
+\PleskXml::ftp()->update(array $params)
 ```
 #### Git
 ```php
