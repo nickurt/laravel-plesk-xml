@@ -46,4 +46,14 @@ class Customers extends AbstractApi
             'customer' => ['get' => ['filter' => $params, 'dataset' => ['gen_info' => [], 'stat' => []]]]
         ]);
     }
+
+    /**
+     * @param $params
+     * @return mixed
+     * @throws \Http\Client\Exception
+     */
+    public function update($params)
+    {
+        return $this->post(['customer' => ['set' => [$params]]]);
+    }
 }
