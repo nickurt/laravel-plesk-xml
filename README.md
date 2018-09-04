@@ -6,7 +6,7 @@
 ### Installation
 Install this package with composer:
 ```
-composer require nickurt/laravel-plesk-xml:1.*
+composer require nickurt/laravel-plesk-xml
 ```
 Add the provider to config/app.php file
 ```php
