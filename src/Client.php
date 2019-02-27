@@ -71,7 +71,7 @@ class Client implements ClientInterface
      */
     public function api($name)
     {
-        if(!isset($this->classes[$name])) {
+        if (!isset($this->classes[$name])) {
             throw new \InvalidArgumentException(sprintf('Undefined method called:"%s"', $name));
         }
 
