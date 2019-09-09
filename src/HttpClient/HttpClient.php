@@ -47,7 +47,7 @@ class HttpClient implements HttpClientInterface
     {
         $response = $this->client->request(
             $method,
-            $this->getOptions()['base_url'],
+            sprintf('https://%s:%s%s', $this->getOptions()['host'], $this->getOptions()['port'], '/enterprise/control/agent.php'),
             [
                 'headers' => $this->getHeaders(),
                 'body' => $body

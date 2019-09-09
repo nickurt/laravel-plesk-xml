@@ -31,7 +31,7 @@ abstract class AbstractApi implements ApiInterface
         $parameters = ArrayToXml::convert($parameters, [
             'rootElementName' => 'packet',
             '_attributes' => [
-                'version' => $this->client->getHttpClient()->getOptions()['api_version'],
+                'version' => $this->client->getHttpClient()->getOptions()['version'],
             ],
         ]);
 

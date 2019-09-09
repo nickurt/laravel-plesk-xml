@@ -15,8 +15,8 @@ class Client implements ClientInterface
      * @var array
      */
     private $options = [
-        'api_port' => '8443',
-        'api_version' => '1.6.9.1',
+        'port' => '8443',
+        'version' => '1.6.9.1',
     ];
 
     /**
@@ -106,12 +106,22 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param $host
+     * @param string $host
      */
     public function setHost($host)
     {
         $this->getHttpClient()->setOptions([
-            'base_url' => sprintf('https://%s:8443/enterprise/control/agent.php', $host)
+            'host' => $host
+        ]);
+    }
+
+    /**
+     * @param int $port
+     */
+    public function setPort($port)
+    {
+        $this->getHttpClient()->setOptions([
+            'port' => $port
         ]);
     }
 }

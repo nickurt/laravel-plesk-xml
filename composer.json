@@ -10,7 +10,7 @@
         "spatie/array-to-xml": "^2.7"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5|^8.0"
+        "orchestra/testbench": "^3.8|^4.0"
     },
     "autoload": {
         "psr-4": {
@@ -19,6 +19,11 @@
         "files": [
             "src/helpers.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "nickurt\\PleskXml\\tests\\": "tests"
+        }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",

@@ -76,6 +76,7 @@ class Plesk
 
         $this->client = new \nickurt\PleskXml\Client();
         $this->client->setHost($config['host']);
+        $this->client->setPort($config['port'] ?? 8443);
         $this->client->setCredentials(
             $config['username'],
             $config['password']
