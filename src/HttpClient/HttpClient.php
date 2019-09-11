@@ -12,19 +12,25 @@ class HttpClient implements HttpClientInterface
     /**
      * @var array
      */
-    protected $options = [];
+    protected $headers = [];
 
     /**
      * @var array
      */
-    protected $headers = [];
+    protected $options = [];
 
     /**
-     * HttpClient constructor.
+     * @return \GuzzleHttp\Client
      */
-    public function __construct()
+    public function getClient()
     {
-        $this->client = new \GuzzleHttp\Client();
+        if (!isset($this->client)) {
+            $this->client = new \GuzzleHttp\Client();
+
+            return $this->client;
+        }
+
+        return $this->client;
     }
 
     /**
@@ -45,7 +51,7 @@ class HttpClient implements HttpClientInterface
      */
     public function request($body, $method)
     {
-        $response = $this->client->request(
+        $response = $this->getClient()->request(
             $method,
             sprintf('https://%s:%s%s', $this->getOptions()['host'], $this->getOptions()['port'], '/enterprise/control/agent.php'),
             [
