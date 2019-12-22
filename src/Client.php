@@ -6,22 +6,10 @@ use nickurt\PleskXml\HttpClient\HttpClient;
 
 class Client implements ClientInterface
 {
-    /**
-     * @var
-     */
+    /** @var \nickurt\PleskXml\HttpClient\HttpClient */
     protected $client;
 
-    /**
-     * @var array
-     */
-    private $options = [
-        'port' => '8443',
-        'version' => '1.6.9.1',
-    ];
-
-    /**
-     * @var array
-     */
+    /** @var array */
     private $classes = [
         'aps' => 'Aps',
         'certificates' => 'Certificates',
@@ -49,6 +37,12 @@ class Client implements ClientInterface
         'sitesaliases' => 'SitesAliases',
         'subdomains' => 'Subdomains',
         'subscriptions' => 'Subscriptions',
+    ];
+
+    /** @var array */
+    private $options = [
+        'port' => '8443',
+        'version' => '1.6.9.1',
     ];
 
     /**
@@ -81,8 +75,8 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param $username
-     * @param $password
+     * @param string $username
+     * @param string $password
      */
     public function setCredentials($username, $password)
     {
@@ -122,6 +116,16 @@ class Client implements ClientInterface
     {
         $this->getHttpClient()->setOptions([
             'port' => $port
+        ]);
+    }
+
+    /**
+     * @param string $secretKey
+     */
+    public function setSecretKey($secretKey)
+    {
+        $this->getHttpClient()->setHeaders([
+            'KEY' => $secretKey
         ]);
     }
 }

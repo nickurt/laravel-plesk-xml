@@ -4,19 +4,13 @@ namespace nickurt\PleskXml\HttpClient;
 
 class HttpClient implements HttpClientInterface
 {
-    /**
-     * @var \GuzzleHttp\Client
-     */
+    /** @var \GuzzleHttp\Client */
     protected $client;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $headers = [];
 
-    /**
-     * @var array
-     */
+    /** @var array  */
     protected $options = [];
 
     /**

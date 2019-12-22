@@ -23,11 +23,22 @@ class TestCase extends Orchestra
                     'username' => 'plesk-xml',
                     'password' => 'xml-plesk',
                 ],
-                'custom' => [
+
+                'server-with-custom-port' => [
                     'host' => 'xml-plesk-xml.tld',
                     'port' => 8444,
                     'username' => 'xml-plesk-xml',
                     'password' => 'plesk-xml-plesk',
+                ],
+                'server-with-key-and-user-pass-auth' => [
+                    'host' => 'plesk-xml.tld',
+                    'username' => 'plesk-xml',
+                    'password' => 'xml-plesk',
+                    'key' => 'plesk-key'
+                ],
+                'server-with-key-auth' => [
+                    'host' => 'plesk-xml.tld',
+                    'key' => 'key-plesk'
                 ]
             ],
         ]);

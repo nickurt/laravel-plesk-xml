@@ -10,6 +10,7 @@ return [
             'host' => env('PLESK_DEFAULT_HOST'),
             'username' => env('PLESK_DEFAULT_USERNAME'),
             'password' => env('PLESK_DEFAULT_PASSWORD'),
+            'key' => env('PLESK_DEFAULT_KEY'),
         ],
 
     ],

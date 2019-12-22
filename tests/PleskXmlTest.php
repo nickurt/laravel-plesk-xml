@@ -7,36 +7,56 @@ use nickurt\PleskXml\Facade as Plesk;
 class PleskXmlTest extends TestCase
 {
     /** @test */
+    public function it_can_prefer_auth_key_based_auth_above_user_and_pass_auth()
+    {
+        config(['plesk-xml.default' => 'server-with-key-and-user-pass-auth']);
+
+        /** @var \nickurt\PleskXml\HttpClient\HttpClient $httpClient */
+        $httpClient = Plesk::getHttpClient();
+
+        $this->assertSame(['port' => 8443, 'version' => '1.6.9.1', 'host' => 'plesk-xml.tld'], $httpClient->getOptions());
+        $this->assertSame(['KEY' => 'plesk-key'], $httpClient->getHeaders());
+    }
+
+    /** @test */
     public function it_can_use_a_custom_plesk_server()
     {
-        config(['plesk-xml.default' => 'custom']);
+        config(['plesk-xml.default' => 'server-with-custom-port']);
 
-        $plesk = Plesk::getHttpClient();
+        /** @var \nickurt\PleskXml\HttpClient\HttpClient $httpClient */
+        $httpClient = Plesk::getHttpClient();
 
         $this->assertSame('https://xml-plesk-xml.tld:8444/enterprise/control/agent.php', sprintf(
-            'https://%s:%s%s', $plesk->getOptions()['host'], $plesk->getOptions()['port'], '/enterprise/control/agent.php'
+            'https://%s:%s%s', $httpClient->getOptions()['host'], $httpClient->getOptions()['port'], '/enterprise/control/agent.php'
         ));
 
-        $this->assertSame('xml-plesk-xml.tld', $plesk->getOptions()['host']);
-        $this->assertSame(8444, $plesk->getOptions()['port']);
-
-        $this->assertSame('xml-plesk-xml', $plesk->getHeaders()['HTTP_AUTH_LOGIN']);
-        $this->assertSame('plesk-xml-plesk', $plesk->getHeaders()['HTTP_AUTH_PASSWD']);
+        $this->assertSame(['port' => 8444, 'version' => '1.6.9.1', 'host' => 'xml-plesk-xml.tld'], $httpClient->getOptions());
+        $this->assertSame(["HTTP_AUTH_LOGIN" => "xml-plesk-xml", "HTTP_AUTH_PASSWD" => "plesk-xml-plesk"], $httpClient->getHeaders());
     }
 
     /** @test */
     public function it_can_use_the_default_plesk_server()
     {
-        $plesk = Plesk::getHttpClient();
+        /** @var \nickurt\PleskXml\HttpClient\HttpClient $httpClient */
+        $httpClient = Plesk::getHttpClient();
 
         $this->assertSame('https://plesk-xml.tld:8443/enterprise/control/agent.php', sprintf(
-            'https://%s:%s%s', $plesk->getOptions()['host'], $plesk->getOptions()['port'], '/enterprise/control/agent.php'
+            'https://%s:%s%s', $httpClient->getOptions()['host'], $httpClient->getOptions()['port'], '/enterprise/control/agent.php'
         ));
 
-        $this->assertSame('plesk-xml.tld', $plesk->getOptions()['host']);
-        $this->assertSame(8443, $plesk->getOptions()['port']);
+        $this->assertSame(['port' => 8443, 'version' => '1.6.9.1', 'host' => 'plesk-xml.tld'], $httpClient->getOptions());
+        $this->assertSame(["HTTP_AUTH_LOGIN" => "plesk-xml", "HTTP_AUTH_PASSWD" => "xml-plesk"], $httpClient->getHeaders());
+    }
 
-        $this->assertSame('plesk-xml', $plesk->getHeaders()['HTTP_AUTH_LOGIN']);
-        $this->assertSame('xml-plesk', $plesk->getHeaders()['HTTP_AUTH_PASSWD']);
+    /** @test */
+    public function it_can_work_with_key_based_auth()
+    {
+        config(['plesk-xml.default' => 'server-with-key-auth']);
+
+        /** @var \nickurt\PleskXml\HttpClient\HttpClient $httpClient */
+        $httpClient = Plesk::getHttpClient();
+
+        $this->assertSame(['port' => 8443, 'version' => '1.6.9.1', 'host' => 'plesk-xml.tld'], $httpClient->getOptions());
+        $this->assertSame(['KEY' => 'key-plesk'], $httpClient->getHeaders());
     }
 }

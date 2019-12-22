@@ -2,28 +2,23 @@
 
 namespace nickurt\PleskXml;
 
+use Illuminate\Foundation\Application;
+
 class Plesk
 {
-    /**
-     * @var
-     */
+    /** @var \Illuminate\Foundation\Application */
     protected $app;
 
-    /**
-     * @var array
-     */
+    /** @var \nickurt\PleskXml\Client */
+    protected $client;
+
+    /** @var array */
     protected $servers = [];
 
     /**
-     * @var
+     * @param Application $app
      */
-    protected $client;
-
-    /**
-     * Plesk constructor.
-     * @param $app
-     */
-    public function __construct($app)
+    public function __construct(Application $app)
     {
         $this->app = $app;
     }
@@ -39,8 +34,8 @@ class Plesk
     }
 
     /**
-     * @param null $name
-     * @return mixed|Api\Client
+     * @param string|null $name
+     * @return \nickurt\PleskXml\Client
      */
     public function server($name = null)
     {
@@ -50,7 +45,7 @@ class Plesk
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDefaultServer()
     {
@@ -58,8 +53,8 @@ class Plesk
     }
 
     /**
-     * @param $name
-     * @return mixed|Api\Client
+     * @param string $name
+     * @return \nickurt\PleskXml\Client
      */
     protected function get($name)
     {
@@ -67,8 +62,8 @@ class Plesk
     }
 
     /**
-     * @param $name
-     * @return Client
+     * @param string $name
+     * @return \nickurt\PleskXml\Client
      */
     protected function resolve($name)
     {
@@ -77,17 +72,22 @@ class Plesk
         $this->client = new \nickurt\PleskXml\Client();
         $this->client->setHost($config['host']);
         $this->client->setPort($config['port'] ?? 8443);
-        $this->client->setCredentials(
-            $config['username'],
-            $config['password']
-        );
+
+        if (isset($config['key']) && strlen($config['key']) > 0) {
+            $this->client->setSecretKey($config['key']);
+        } else {
+            $this->client->setCredentials(
+                $config['username'],
+                $config['password']
+            );
+        }
 
         return $this->client;
     }
 
     /**
-     * @param $name
-     * @return mixed
+     * @param string $name
+     * @return array
      */
     protected function getConfig($name)
     {
