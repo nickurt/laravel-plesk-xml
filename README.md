@@ -1,4 +1,9 @@
 ## Laravel Plesk Onyx 17.8 Xml
+[![Build Status](https://github.com/nickurt/laravel-plesk-xml/workflows/tests/badge.svg)](https://github.com/nickurt/laravel-plesk-xml/actions)
+[![Total Downloads](https://poser.pugx.org/nickurt/laravel-plesk-xml/d/total.svg)](https://packagist.org/packages/nickurt/laravel-plesk)
+[![Latest Stable Version](https://poser.pugx.org/nickurt/laravel-plesk-xml/v/stable.svg)](https://packagist.org/packages/nickurt/laravel-plesk)
+[![MIT Licensed](https://poser.pugx.org/nickurt/laravel-plesk-xml/license.svg)](LICENSE.md)
+
 ### Table of contents
 - [Installation](#installation)
 - [Usage](#usage)
